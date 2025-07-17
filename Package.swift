@@ -3,20 +3,20 @@
 
 import PackageDescription
 
-let commonVersion: Version = "24.11.5"
-let navNativeVersion: Version = "324.0.5"
+let commonVersion: Version = "24.10.2"
+let navNativeVersion: Version = "323.0.3"
 
-let version = "3.8.2"
+let version = "3.7.2"
 
-let binaries = ["MapboxCoreMaps": "7b03aa72665dabc22401ffb7c4a13af312cb55a8a7b2092e14f584b4a84da62f", 
-"MapboxDirections": "564990ec958f279e8fa14818fa70d3a0e98012fc6e68d55efaf47c6ce55cceb2", 
-"MapboxMaps": "f94b063e8140863b1fc2d702f412b32fc5937c2e236ed220239bbcbee6f0c78e", 
-"MapboxNavigationCore": "9f7525cb1837d0a97b23d43f28d87245fbf795bf039c8406a27104ed90b635a5", 
-"MapboxNavigationUIKit": "a42512b76180aaa13618b3a25a63a7af35ac4b2036910d6e31bda731ce9cdfc8", 
-"_MapboxNavigationHelpers": "1655a956d3c483156cb67a151d3c42e0cae7cf906107ba2855d99c625e385c2b", 
+let binaries = ["MapboxCoreMaps": "b85ebc1994f7cdf3b3d26a5ff92557ee4c68b3768d63eaf50530834585817e29", 
+"MapboxDirections": "9c5952b31f76e4bca7430895cb58e7143f9cdf7bc8d4487d580ef8e9af126241", 
+"MapboxMaps": "56ff99db37878c8f8e6869c3b7b7b2abf31a880dc38c5b49d7f1425c61505082", 
+"MapboxNavigationCore": "944d3e474d512ae585f428ca527a374273074b3da091b431923153f3e56e8feb", 
+"MapboxNavigationUIKit": "813b1875b13ca4840a7985d662285d52f73b522061e08f0d9fc1c98da16b9b09", 
+"_MapboxNavigationHelpers": "0c993622a27452a5608b78b63bf06d70d57354c7b89d52c18bf4f07399d89295", 
  ]
 
-let libraries = ["MapboxNavigationCustomRoute": "567e25a4abf89a53c40d6ff041eb13227c4c241248eafb5de1cb1806f0593d77", 
+let libraries = ["MapboxNavigationCustomRoute": "0eab9eaf27c0715445886657f83fa4c4c3760e717ec867ba70c68bce968e035f", 
  ]
 
 enum FrameworkType {
@@ -51,20 +51,15 @@ let package = Package(
     targets: binaryTargets() + libraryTargets() + [
         .target(
             name: "MapboxNavigationCoreWrapper",
-            dependencies:
-            binaries.keys
-                .filter { $0 != "MapboxNavigationUIKit" }
-                .map { .byName(name: $0) }
-                + [
-                    .product(name: "MapboxCommon", package: "mapbox-common-ios"),
-                    .product(name: "MapboxNavigationNative", package: "mapbox-navigation-native-ios"),
-                ],
+            dependencies: binaries.keys.map { .byName(name: $0) } + [
+                .product(name: "MapboxCommon", package: "mapbox-common-ios"),
+                .product(name: "MapboxNavigationNative", package: "mapbox-navigation-native-ios"),
+            ],
             path: "Sources/.empty/MapboxNavigationCoreWrapper"
         ),
         .target(
             name: "MapboxNavigationUIKitWrapper",
             dependencies: [
-                "MapboxNavigationUIKit",
                 "MapboxNavigationCoreWrapper",
             ],
             path: "Sources/.empty/MapboxNavigationUIKitWrapper"

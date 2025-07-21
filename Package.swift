@@ -51,15 +51,20 @@ let package = Package(
     targets: binaryTargets() + libraryTargets() + [
         .target(
             name: "MapboxNavigationCoreWrapper",
-            dependencies: binaries.keys.map { .byName(name: $0) } + [
-                .product(name: "MapboxCommon", package: "mapbox-common-ios"),
-                .product(name: "MapboxNavigationNative", package: "mapbox-navigation-native-ios"),
-            ],
+            dependencies:
+            binaries.keys
+                .filter { $0 != "MapboxNavigationUIKit" }
+                .map { .byName(name: $0) }
+                + [
+                    .product(name: "MapboxCommon", package: "mapbox-common-ios"),
+                    .product(name: "MapboxNavigationNative", package: "mapbox-navigation-native-ios"),
+                ],
             path: "Sources/.empty/MapboxNavigationCoreWrapper"
         ),
         .target(
             name: "MapboxNavigationUIKitWrapper",
             dependencies: [
+                "MapboxNavigationUIKit",
                 "MapboxNavigationCoreWrapper",
             ],
             path: "Sources/.empty/MapboxNavigationUIKitWrapper"

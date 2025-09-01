@@ -3,21 +3,21 @@
 
 import PackageDescription
 
-let commonVersion: Version = "24.15.0-rc.1"
-let navNativeVersion: Version = "324.15.0-rc.1"
+let commonVersion: Version = "24.14.3"
+let navNativeVersion: Version = "324.14.3"
 
-let version = "3.12.0-rc.1"
+let version = "3.11.2"
 
-let binaries = ["MapboxCoreMaps": "8f6ec4e571b8be39543f660d3e631881c43fd20d5b409d3f4869e9e3ae3d6a24", 
-"MapboxDirections": "ed1de8acbf42ee07c1d978135206b1f3b87ce86a36ffba0338adb99d2b91e815", 
-"MapboxMaps": "993d6573ababd29a9de73a80705a96d6d50e1ecaee7dbdf18d8cb52971eadd29", 
-"MapboxNavigationCore": "42ddb6948a11cea01c7e87af3e415d76d9c2b319315fcf1b896ce951db43c059", 
-"MapboxNavigationUIKit": "2dbbe71d2ebdd2944cc1f80e12b852b4226cbb7bc8179efa5e7e00ff2ccb881c", 
-"_MapboxNavigationHelpers": "ae93cfc714473d7e06c5d27afd02dd04e0f43eff9cffed30900cc0b4bcd39541", 
-"_MapboxNavigationLocalization": "d3074c4dcb000a332129abc47a5b6852afdbc4c6332ad0ef1888cc6345ee58ef", 
+let binaries = ["MapboxCoreMaps": "9e96b8369a667a30617aad72a445d20e4700912f88c0e95017f3d7e61a133fa3", 
+"MapboxDirections": "16b6f5db87d36a0a2a2a5528ed40ca8d545379740e6bfcf050e4bf5773e7c3ab", 
+"MapboxMaps": "739f14e5842bacf1532f9817b8aeb3f3d79dcce36721bd3b73f8d8a9f9e89ce4", 
+"MapboxNavigationCore": "29c9c92f61bc29c92b0a1ffac9fa333cc7d2858d956cf213b686f6b22a99740f", 
+"MapboxNavigationUIKit": "9575b29146fb5264b836f3ee67c85e73d347e602906d9a795811d0510abe770f", 
+"_MapboxNavigationHelpers": "fadb049005eb8437d52253418acf034e336207ca634412576ee0592abb13c9e8", 
+"_MapboxNavigationLocalization": "3af11b577b3a76ceb9a6d08ac12dcdf1d1988919f740aec45e5382445cc5f914", 
  ]
 
-let libraries = ["MapboxNavigationCustomRoute": "49b4110ef8d8364c64f38a1768d08e74c4f73e6160523f85482614fa4ff44731", 
+let libraries = ["MapboxNavigationCustomRoute": "9072b3b9e4ffbc297548adb1c0f45c76172bf0287b14e6747f34531c524653db", 
  ]
 
 enum FrameworkType {
@@ -39,10 +39,6 @@ let package = Package(
         .library(
             name: "MapboxNavigationUIKit",
             targets: ["MapboxNavigationUIKitWrapper"]
-        ),
-        .library(
-            name: "MapboxDirections",
-            targets: ["MapboxDirectionsWrapper"]
         ),
         .library(
             name: "MapboxNavigationCustomRoute",
@@ -73,14 +69,6 @@ let package = Package(
                 "MapboxNavigationCoreWrapper",
             ],
             path: "Sources/.empty/MapboxNavigationUIKitWrapper"
-        ),
-        .target(
-            name: "MapboxDirectionsWrapper",
-            dependencies: [
-                "MapboxDirections",
-                .product(name: "MapboxCommon", package: "mapbox-common-ios"),
-            ],
-            path: "Sources/.empty/MapboxDirectionsWrapper"
         ),
         .target(
             name: "MapboxNavigationCustomRouteWrapper",

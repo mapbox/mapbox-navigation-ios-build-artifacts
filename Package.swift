@@ -3,8 +3,8 @@
 
 import PackageDescription
 
-let commonVersion: Version = "24.19.0-rc.1"
-let navNativeVersion: Version = "324.19.0-rc.1"
+let commonVersion: Version = "24.20.0-SNAPSHOT-02-12--15-15.git-96870d2"
+let navNativeVersion: Version = "324.20.0-SNAPSHOT-02-12--15-15.git-96870d2"
 
 let version = "3.19.0-rc.1"
 

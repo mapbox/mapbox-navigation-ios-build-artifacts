@@ -27,7 +27,7 @@ enum FrameworkType {
     case local
 }
 
-let frameworkType: FrameworkType = .release
+let frameworkType: FrameworkType = .snapshot
 
 let package = Package(
     name: "MapboxNavigation",
@@ -109,7 +109,7 @@ func binaryTarget(binaryName: String, checksum: String, packageName: String) -> 
     switch frameworkType {
     case .release, .staging, .snapshot:
         let host = frameworkType == .staging ? "cloudfront-staging.tilestream.net" : "api.mapbox.com"
-        let variant = frameworkType == .snapshot ? "snapshot" : "releases"
+        let variant = frameworkType == .snapshot ? "snapshots" : "releases"
         return Target.binaryTarget(
             name: binaryName,
             url: "https://\(host)/downloads/v2/\(packageName)" +

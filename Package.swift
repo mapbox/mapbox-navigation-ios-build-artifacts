@@ -3,25 +3,26 @@
 
 import PackageDescription
 
-let commonVersion: Version = "24.19.0-rc.1"
-let navNativeVersion: Version = "324.19.0-rc.1"
+let commonVersion: Version = "24.20.0-SNAPSHOT-02-12--15-15.git-96870d2"
+let navNativeVersion: Version = "324.20.0-SNAPSHOT-02-12--15-15.git-96870d2"
 
-let version = "3.19.0-rc.1"
+let version = "3.20.0-SNAPSHOT-02-12--15-15.git-96870d2"
 
-let binaries = ["MapboxCoreMaps": "3fb166d288bc15f3287290e263bcdeebe79375d5c7df26ae9482f077662a8e34", 
-"MapboxDirections": "2bad21197c4284f07c2ca64c4ac55afeee44c8221b384b5d3af2e6ee6aa5d608", 
-"MapboxMaps": "d1b778b6647cdcc93f52962839fd8ee57c223d848fc851789e39549dfc7d8552", 
-"MapboxNavigationCore": "269c3ef51212bff8c8849e401145d7e7a266c9fc9f87660f7c0c5d26ff23ac73", 
-"MapboxNavigationUIKit": "6b6f9aa86d07ce76a283122e88a162a8b4dd1ba8d45ee0b2afa9635fc2fbb429", 
-"_MapboxNavigationHelpers": "05fe442c992b85fa79fc34d8454d645b06e8305744e7b44aaa3a4454f11e0ec2", 
-"_MapboxNavigationLocalization": "800fe955cfdb546b3cb72c664449b6040c3deb2d38577b8f1ac89e9617de117c", 
+let binaries = ["MapboxCoreMaps": "be372fdb287866b24299f52ff6323d3461d9289c07a03dce618434e62c51ed9d", 
+"MapboxDirections": "5e4d23aeb4a60117f2cb5a32174b0d1fe1acf854ed69b932bec12cf4c842708d", 
+"MapboxMaps": "a9d0ebbb882cda18a916003e91eea741329f2089a2e6acbf27fcc253b1fe11eb", 
+"MapboxNavigationCore": "b25f88f211f51459c9f6dd147eb5e3b0b6dc56614ace69bcaf50068e79a13ae4", 
+"MapboxNavigationUIKit": "a6da48f1871480febd94c2b60e7703f8f6aa72197afe28ea5be9162964a16818", 
+"_MapboxNavigationHelpers": "108715d132ac298536b845ae06396b49296ba55bb9e6fa00e5a9bdbe10b4cb74", 
+"_MapboxNavigationLocalization": "ca46abbe2453a96f2370f2de40c398096e36e199648c51bc8c6b16c7910ffdd5", 
  ]
 
-let libraries = ["MapboxNavigationCustomRoute": "0ca4a9bb7f1dc5c4e0921494bca0ec804a1c64a9e37055f09db18fac4412bba6", 
+let libraries = ["MapboxNavigationCustomRoute": "0a159e5842e822402b20a4171ae6d66fccb707fe06c2e0eaa1970197fe57f42a", 
  ]
 
 enum FrameworkType {
     case release
+    case snapshot
     case staging
     case local
 }
@@ -106,12 +107,13 @@ func libraryTargets() -> [Target] {
 
 func binaryTarget(binaryName: String, checksum: String, packageName: String) -> Target {
     switch frameworkType {
-    case .release, .staging:
-        let host = frameworkType == .release ? "api.mapbox.com" : "cloudfront-staging.tilestream.net"
+    case .release, .staging, .snapshot:
+        let host = frameworkType == .staging ? "cloudfront-staging.tilestream.net" : "api.mapbox.com"
+        let variant = frameworkType == .snapshot ? "snapshot" : "releases"
         return Target.binaryTarget(
             name: binaryName,
             url: "https://\(host)/downloads/v2/\(packageName)" +
-                "/releases/ios/packages/\(version)/\(binaryName).xcframework.zip",
+                "/\(variant)/ios/packages/\(version)/\(binaryName).xcframework.zip",
             checksum: checksum
         )
     case .local:

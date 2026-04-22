@@ -95,6 +95,18 @@ A clean exit code (0) means:
   `turf-swift`) resolved to a version consistent with the manifest's
   `exact:` constraints.
 
+If a checksum is wrong, `xcodebuild` prints both the expected and the
+actual value, e.g.:
+
+```
+checksum of downloaded artifact of binary target 'MapboxDirections'
+  (6740caf04592…) does not match checksum specified by the manifest
+  (b6efc3261fb4…)
+```
+
+The first hex string is what's actually hosted at `api.mapbox.com`; the
+second is what `Package.swift` declares.
+
 ### 2b. Compile & link for the simulator
 
 ```bash

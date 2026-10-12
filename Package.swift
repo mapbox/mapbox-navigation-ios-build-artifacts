@@ -3,21 +3,21 @@
 
 import PackageDescription
 
-let commonVersion: Version = "24.30.5"
-let navNativeVersion: Version = "324.30.5"
+let commonVersion: Version = "24.32.1"
+let navNativeVersion: Version = "324.32.1"
 
-let version = "3.30.5"
+let version = "3.32.1"
 
-let binaries = ["MapboxCoreMaps": "0679d80a8f7e8ce420452340beaa50a4ad6c541f60e0558d40bc678477bb22fd", 
-"MapboxDirections": "5a9f498a4d53dbbb5900c186ee2b8233e46323165e1b5394877622aaf8de87c1", 
-"MapboxMaps": "e39f5ad08c61f31defa85194c76398e81f7da708f19b8754e4f73806e9cb61da", 
-"MapboxNavigationCore": "16c8885eebb9fa830a8c9b12947b98e0bde4d7d1119f2f99c082f346dae494bb", 
-"MapboxNavigationUIKit": "e19130a2ac8ef9b98085943770b15d0228d6725e96e28e767dd95d9f912d3267", 
-"_MapboxNavigationHelpers": "6e38b9d8a8af3e3bc020c4d05d65065cab2087ffc74cfdee339e084d1208120b", 
-"_MapboxNavigationLocalization": "18100b2fa04101b79093f75d031a9cb6113772e336e4502d21cae1b5328847e1", 
+let binaries = ["MapboxCoreMaps": "46b05ad5764cf101a637423e01a074889a6c0be1a6e8dbb4a769d156ac44852e", 
+"MapboxDirections": "4672062ff150550674ddd5842a29428dbcfeb73eb9e2f1deaff7ef9bf186cb6c", 
+"MapboxMaps": "a62ced28d67fa405b511c6f1028fff7a5586deebc8c59857c1d5d7238ef24726", 
+"MapboxNavigationCore": "d02a74e9aa053051f247fdb0f4cfd16f9bad0844784018e624e9279e354ef626", 
+"MapboxNavigationUIKit": "c3a820e7f1881d00189027ddaff80892bcb3b9c2a6010a3af6479a1e8a79ae2c", 
+"_MapboxNavigationHelpers": "fef5e8c85950cc2bbe262f1a58feee88fc7b861deea7c4b9013dc76287d057ea", 
+"_MapboxNavigationLocalization": "dbfd4b88968f1ce420d2d0f2612cdd12d2ab1a7e8a01aaa6e14ee0f2461061bb", 
  ]
 
-let libraries = ["MapboxNavigationCustomRoute": "b3136c777b78b3978d939c24dd2e94850cb6ef37f7bf2d18f82860a378e10034", 
+let libraries = ["MapboxNavigationCustomRoute": "4c761f13aa2eda4c9bdcecd8bbf33100bb409e4b00de7ee358011b7ce321d234", 
  ]
 
 enum FrameworkType {
